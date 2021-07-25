@@ -41,23 +41,29 @@ data
 * setup_lyrics.ipynb
 
 ## Training Demo
-* model: Cnn6/Cnn10 (model.py)
-* mode:  Ar/Va/4Q
+* CNN model: Cnn6/Cnn10 (model.py)
+* BERT model: BERT/ALBERT (model_bert.py)
+* mode:  Ar/Va/4Q 
+* ![GITHUB](https://github.com/sungbohsun/BECMER/blob/main/ar-va.png)
 * k-fold: number
 * Cross validation: ALL/PME
+* ![GITHUB](https://github.com/sungbohsun/BECMER/blob/main/cv.png)
 ```python
+#CNN
 CUDA_VISIBLE_DEVICES=0, python train_cnn.py \
 --model Cnn6 \
 --mode Va \
 --fold 0 \
 --CV ALL
 
+#BERT
 CUDA_VISIBLE_DEVICES=0, python train_bert.py \
 --model BERT \
 --mode Va \
 --fold 0 \
 --CV ALL
 
+#Fusion
 CUDA_VISIBLE_DEVICES=0, python train_mix.py \
 --mode Va \
 --path1 ./model/ALL-Audio_Va_Cnn6_fold-0/best_net.pt \
