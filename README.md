@@ -52,7 +52,20 @@ data
 ├── dic_PME_lyrics.pt
 ├── dic_Bi.pt
 ├── dic_Bi_lyrics.pt
+```
 
+## Pretrained model 
+
+https://drive.google.com/drive/folders/1SXmfYa3eDrU_mcPWwTj0Z9HGxEIVLWUz?usp=sharing
+
+```bash
+model
+├── ALL-Audio_4Q_Cnn10_fold-0
+│   ├── best_net.pt
+├── ALL-Lyrics_4Q_ALBERT_fold-0
+│   ├── best_net.pt
+├── ALL-MIX_4Q_Cnn10_ALBERT_fold-0
+│   ├── best_net.pt
 ```
 ## Training Demo
 * CNN model: Cnn6/Cnn10 (model.py)
@@ -65,28 +78,28 @@ data
 ```python
 #CNN
 CUDA_VISIBLE_DEVICES=0, python train_cnn.py \
---model Cnn6 \
---mode Va \
+--model Cnn10 \
+--mode 4Q \
 --fold 0 \
 --CV ALL
 
 #BERT
 CUDA_VISIBLE_DEVICES=0, python train_bert.py \
 --model BERT \
---mode Va \
+--mode 4Q \
 --fold 0 \
 --CV ALL
 
 #Fusion
 CUDA_VISIBLE_DEVICES=0, python train_mix.py \
 --mode Va \
---path1 ./model/ALL-Audio_Va_Cnn6_fold-0/best_net.pt \
---path2 ./model/ALL-Lyrics_Va_BERT_fold-0/best_net.pt
+--path1 ./model/ALL-Audio_4Q_Cnn10_fold-0/best_net.pt \
+--path2 ./model/ALL-Lyrics_4Q_ALBERT_fold-0/best_net.pt
 ```
 
 ## Test Demo
 ```python
-CUDA_VISIBLE_DEVICES=2, python test_cnn.py  --path ./model/PME-Audio_Ar_Cnn10_fold-0/best_net.pt
-CUDA_VISIBLE_DEVICES=2, python test_bert.py --path ./model/PME-Lyrics_Ar_BERT_fold-0/best_net.pt
-CUDA_VISIBLE_DEVICES=2, python test_mix.py  --path ./model/PME-MIX_Ar_Cnn6_BERT_fold-0/best_net.pt
+CUDA_VISIBLE_DEVICES=2, python test_cnn.py  --path ./model/ALL-Audio_4Q_Cnn10_fold-0/best_net.pt
+CUDA_VISIBLE_DEVICES=2, python test_bert.py --path ./model/ALL-Lyrics_4Q_ALBERT_fold-0/best_net.pt
+CUDA_VISIBLE_DEVICES=2, python test_mix.py  --path ./model/ALL-MIX_4Q_Cnn10_ALBERT_fold-0/best_net.pt
 ```
