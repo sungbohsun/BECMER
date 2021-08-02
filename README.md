@@ -35,11 +35,25 @@ data
 │   ├── Q4
 │   └── readme.txt
 ```
-## Setup
+## Data proccess
 * setup_Bi.ipynb
 * setup_PME&4Q.ipynb
 * setup_lyrics.ipynb
 
+## Proccessed data
+
+https://drive.google.com/drive/folders/1xC72Ul4Qx1FvCkhg208rNwrqXcJAd3bq?usp=sharing
+
+```bash
+data
+├── dic_Q4.pt
+├── dic_Q4_lyrics.pt
+├── dic_PME.pt
+├── dic_PME_lyrics.pt
+├── dic_Bi.pt
+├── dic_Bi_lyrics.pt
+
+```
 ## Training Demo
 * CNN model: Cnn6/Cnn10 (model.py)
 * BERT model: BERT/ALBERT (model_bert.py)
